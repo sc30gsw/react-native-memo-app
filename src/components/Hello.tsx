@@ -11,12 +11,14 @@ const styles = StyleSheet.create({
   },
 })
 
-type HelloProps = Readonly<{ children?: ReactNode }>
+type HelloProps = Readonly<{ children?: ReactNode; bang?: boolean }>
 
-export const Hello: FC<HelloProps> = ({ children }) => {
+export const Hello: FC<HelloProps> = ({ children, bang }) => {
   return (
     <View>
-      <Text style={styles.text}>Hello {children}</Text>
+      <Text style={styles.text}>
+        Hello {children} {bang ? '!' : ''}
+      </Text>
     </View>
   )
 }
