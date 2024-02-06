@@ -1,5 +1,5 @@
 import React, { FC, ReactNode } from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, TextStyle, View } from 'react-native'
 
 const styles = StyleSheet.create({
   text: {
@@ -11,12 +11,16 @@ const styles = StyleSheet.create({
   },
 })
 
-type HelloProps = Readonly<{ children?: ReactNode; bang?: boolean }>
+type HelloProps = Readonly<{
+  children?: ReactNode
+  bang?: boolean
+  style?: TextStyle
+}>
 
-export const Hello: FC<HelloProps> = ({ children, bang }) => {
+export const Hello: FC<HelloProps> = ({ children, bang, style }) => {
   return (
     <View>
-      <Text style={styles.text}>
+      <Text style={[styles.text, style]}>
         Hello {children} {bang ? '!' : ''}
       </Text>
     </View>
