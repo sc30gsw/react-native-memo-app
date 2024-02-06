@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FC, ReactNode } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 
 const styles = StyleSheet.create({
@@ -11,10 +11,12 @@ const styles = StyleSheet.create({
   },
 })
 
-export const Hello = () => {
+type HelloProps = Readonly<{ children?: ReactNode }>
+
+export const Hello: FC<HelloProps> = ({ children }) => {
   return (
     <View>
-      <Text style={styles.text}>Form</Text>
+      <Text style={styles.text}>Hello {children}</Text>
     </View>
   )
 }
