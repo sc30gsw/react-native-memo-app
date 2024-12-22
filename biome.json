@@ -21,17 +21,15 @@
     "enabled": true,
     "rules": {
       "all": true,
-      "correctness": {
-        "noNodejsModules": "off"
-      },
-      "suspicious": {
-        "noReactSpecificProps": "off"
+      "nursery": {
+        "useImportRestrictions": "off",
+        "useNodejsImportProtocol": "off"
       }
     }
   },
   "overrides": [
     {
-      "include": ["App.tsx"],
+      "include": ["tailwind.config.ts", "_layout.tsx", "index.tsx"],
       "linter": {
         "rules": {
           "style": {
