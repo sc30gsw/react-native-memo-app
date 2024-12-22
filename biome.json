@@ -1,10 +1,15 @@
 {
   "$schema": "https://biomejs.dev/schemas/1.5.3/schema.json",
-  "organizeImports": {
-    "enabled": true
+  "files": {
+    "ignoreUnknown": false,
+    "ignore": []
   },
   "formatter": {
+    "enabled": true,
     "indentStyle": "space"
+  },
+  "organizeImports": {
+    "enabled": true
   },
   "javascript": {
     "formatter": {
@@ -16,8 +21,11 @@
     "enabled": true,
     "rules": {
       "all": true,
-      "nursery": {
+      "correctness": {
         "noNodejsModules": "off"
+      },
+      "suspicious": {
+        "noReactSpecificProps": "off"
       }
     }
   },
