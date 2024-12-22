@@ -1,9 +1,9 @@
 import { cn } from '@/utils/classes'
-import { ComponentProps } from 'react'
+import { ComponentProps, ReactNode } from 'react'
 import { Text, View } from 'react-native'
 
 type CircleButtonProps = {
-  icon: string
+  icon: ReactNode
   className?: ComponentProps<typeof View>['className']
 }
 

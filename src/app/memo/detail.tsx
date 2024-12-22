@@ -1,5 +1,6 @@
 import { Header } from '@/components/header'
 import { CircleButton } from '@/features/memo/components/circle-button'
+import { Feather } from '@expo/vector-icons'
 import { ScrollView, Text, View } from 'react-native'
 
 const MemoDetail = () => {
@@ -23,7 +24,10 @@ const MemoDetail = () => {
         </Text>
       </ScrollView>
 
-      <CircleButton icon="+" className="top-40 bottom-auto" />
+      <CircleButton
+        icon={<Feather name="check" size={40} />}
+        className="top-40 bottom-auto"
+      />
     </View>
   )
 }
