@@ -1,7 +1,7 @@
 import { Header } from '@/components/header'
+import { AddButton } from '@/features/memo/components/add-button'
 import { MemoListItem } from '@/features/memo/components/memo-list-item'
 import { View } from 'react-native'
-import { Text } from 'react-native'
 
 const Home = () => {
   return (
@@ -15,9 +15,7 @@ const Home = () => {
       </View>
 
       {/* 追加ボタン */}
-      <View>
-        <Text>+</Text>
-      </View>
+      <AddButton />
     </View>
   )
 }
