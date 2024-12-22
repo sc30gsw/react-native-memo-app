@@ -1,4 +1,5 @@
 import { Header } from '@/components/header'
+import { MemoListItem } from '@/features/memo/components/memo-list-item'
 import { View } from 'react-native'
 import { Text } from 'react-native'
 
@@ -10,15 +11,7 @@ const Home = () => {
 
       {/* メモリスト */}
       <View>
-        <View>
-          <View>
-            <Text>買い物リスト</Text>
-            <Text>2023年10月1日 10:00</Text>
-          </View>
-          <View>
-            <Text>X</Text>
-          </View>
-        </View>
+        <MemoListItem />
       </View>
 
       {/* 追加ボタン */}
