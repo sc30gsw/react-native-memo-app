@@ -1,9 +1,9 @@
 import { Header } from '@/components/header'
-import { AddButton } from '@/features/memo/components/add-button'
+import { CircleButton } from '@/features/memo/components/circle-button'
 import { MemoListItem } from '@/features/memo/components/memo-list-item'
 import { View } from 'react-native'
 
-const MemoList = () => {
+export const MemoList = () => {
   return (
     <View className="flex-1 bg-white">
       {/* ヘッダー */}
@@ -15,7 +15,7 @@ const MemoList = () => {
       </View>
 
       {/* 追加ボタン */}
-      <AddButton />
+      <CircleButton icon="+" />
     </View>
   )
 }
