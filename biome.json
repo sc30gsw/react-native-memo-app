@@ -29,7 +29,7 @@
   },
   "overrides": [
     {
-      "include": ["tailwind.config.ts", "_layout.tsx", "index.tsx"],
+      "include": ["tailwind.config.ts", "app/**/*"],
       "linter": {
         "rules": {
           "style": {
