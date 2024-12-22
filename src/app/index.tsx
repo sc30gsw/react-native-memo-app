@@ -1,16 +1,12 @@
-import { View } from "react-native";
-import { Text } from "react-native";
+import { Header } from '@/components/header'
+import { View } from 'react-native'
+import { Text } from 'react-native'
 
 const Home = () => {
   return (
-    <View className="flex-1 justify-center items-center">
+    <View className="flex-1 bg-white">
       {/* ヘッダー */}
-      <View>
-        <View>
-          <Text>Memo App</Text>
-          <Text>ログアウト</Text>
-        </View>
-      </View>
+      <Header />
 
       {/* メモリスト */}
       <View>
@@ -30,7 +26,7 @@ const Home = () => {
         <Text>+</Text>
       </View>
     </View>
-  );
+  )
 }
 
 export default Home
