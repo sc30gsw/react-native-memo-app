@@ -1,10 +1,15 @@
 {
   "$schema": "https://biomejs.dev/schemas/1.5.3/schema.json",
-  "organizeImports": {
-    "enabled": true
+  "files": {
+    "ignoreUnknown": false,
+    "ignore": []
   },
   "formatter": {
+    "enabled": true,
     "indentStyle": "space"
+  },
+  "organizeImports": {
+    "enabled": true
   },
   "javascript": {
     "formatter": {
@@ -17,13 +22,14 @@
     "rules": {
       "all": true,
       "nursery": {
-        "noNodejsModules": "off"
+        "useImportRestrictions": "off",
+        "useNodejsImportProtocol": "off"
       }
     }
   },
   "overrides": [
     {
-      "include": ["App.tsx"],
+      "include": ["tailwind.config.ts", "app/**/*"],
       "linter": {
         "rules": {
           "style": {
