@@ -1,3 +1,4 @@
+import { Link } from 'expo-router'
 import React from 'react'
 import { Text, TextInput, TouchableOpacity, View } from 'react-native'
 
@@ -36,9 +37,11 @@ export const AuthForm = ({
 
       <View className="flex-row">
         <Text className="text-sm">{navigationText}</Text>
-        <TouchableOpacity>
-          <Text className="text-sm text-blue-500 ml-2">{navigationLink}</Text>
-        </TouchableOpacity>
+        <Link href={title === 'Log In' ? '/sign-up' : '/login'} asChild={true}>
+          <TouchableOpacity>
+            <Text className="text-sm text-blue-500 ml-2">{navigationLink}</Text>
+          </TouchableOpacity>
+        </Link>
       </View>
     </View>
   )
