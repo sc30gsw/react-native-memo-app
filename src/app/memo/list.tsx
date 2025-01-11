@@ -2,6 +2,7 @@ import { Header } from '@/components/header'
 import { CircleButton } from '@/features/memo/components/circle-button'
 import { MemoListItem } from '@/features/memo/components/memo-list-item'
 import { Feather } from '@expo/vector-icons'
+import { router } from 'expo-router'
 import { View } from 'react-native'
 
 export const MemoList = () => {
@@ -16,7 +17,10 @@ export const MemoList = () => {
       </View>
 
       {/* 追加ボタン */}
-      <CircleButton icon={<Feather name="plus" size={40} />} />
+      <CircleButton
+        icon={<Feather name="plus" size={40} color={'white'} />}
+        onPress={() => router.push('/memo/create')}
+      />
     </View>
   )
 }

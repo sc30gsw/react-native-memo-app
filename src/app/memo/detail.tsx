@@ -1,6 +1,7 @@
 import { Header } from '@/components/header'
 import { CircleButton } from '@/features/memo/components/circle-button'
 import { Foundation } from '@expo/vector-icons'
+import { router } from 'expo-router'
 import { ScrollView, Text, View } from 'react-native'
 
 const MemoDetail = () => {
@@ -25,7 +26,8 @@ const MemoDetail = () => {
       </ScrollView>
 
       <CircleButton
-        icon={<Foundation name="pencil" size={25} />}
+        icon={<Foundation name="pencil" size={25} color={'white'} />}
+        onPress={() => router.push('/memo/edit')}
         className="top-40 bottom-auto"
       />
     </View>
