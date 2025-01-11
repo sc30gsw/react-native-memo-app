@@ -36,7 +36,9 @@ export const AuthForm = ({
 
       <View className="flex-row">
         <Text className="text-sm">{navigationText}</Text>
-        <Text className="text-sm text-blue-500 ml-2">{navigationLink}</Text>
+        <TouchableOpacity>
+          <Text className="text-sm text-blue-500 ml-2">{navigationLink}</Text>
+        </TouchableOpacity>
       </View>
     </View>
   )

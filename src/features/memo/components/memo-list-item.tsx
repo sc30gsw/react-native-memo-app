@@ -1,4 +1,5 @@
-import { Text, View } from 'react-native'
+import { Fontisto } from '@expo/vector-icons'
+import { Text, TouchableOpacity, View } from 'react-native'
 
 export const MemoListItem = () => {
   return (
@@ -7,9 +8,11 @@ export const MemoListItem = () => {
         <Text className="text-lg leading-8">買い物リスト</Text>
         <Text className="text-xs text-gray-500">2023年10月1日 10:00</Text>
       </View>
-      <View>
-        <Text>X</Text>
-      </View>
+      <TouchableOpacity>
+        <Text className="text-zinc-400 font-bold">
+          <Fontisto name="close-a" size={16} />
+        </Text>
+      </TouchableOpacity>
     </View>
   )
 }

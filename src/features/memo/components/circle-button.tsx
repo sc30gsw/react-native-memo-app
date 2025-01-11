@@ -1,6 +1,6 @@
 import { cn } from '@/utils/classes'
 import { ComponentProps, ReactNode } from 'react'
-import { Text, View } from 'react-native'
+import { Text, TouchableOpacity, View } from 'react-native'
 
 type CircleButtonProps = {
   icon: ReactNode
@@ -9,13 +9,13 @@ type CircleButtonProps = {
 
 export const CircleButton = ({ icon, className }: CircleButtonProps) => {
   return (
-    <View
+    <TouchableOpacity
       className={cn(
         'size-16 rounded-full bg-blue-500 items-center justify-center absolute bottom-10 right-10 shadow-lg',
         className,
       )}
     >
-      <Text className="text-white text-4xl">{icon}</Text>
-    </View>
+      <Text className="text-white text-6xl">{icon}</Text>
+    </TouchableOpacity>
   )
 }
