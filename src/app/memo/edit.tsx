@@ -1,4 +1,3 @@
-import { Header } from '@/components/header'
 import { CircleButton } from '@/features/memo/components/circle-button'
 import { Feather } from '@expo/vector-icons'
 import { router } from 'expo-router'
@@ -10,7 +9,6 @@ const MemoEdit = () => {
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       className="flex-1"
     >
-      <Header />
       <View className="px-8 py-7 flex-1">
         <TextInput
           value={'買い物\nリスト'}

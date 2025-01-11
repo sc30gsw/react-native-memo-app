@@ -1,4 +1,3 @@
-import { Header } from '@/components/header'
 import { CircleButton } from '@/features/memo/components/circle-button'
 import { Foundation } from '@expo/vector-icons'
 import { router } from 'expo-router'
@@ -7,8 +6,6 @@ import { ScrollView, Text, View } from 'react-native'
 const MemoDetail = () => {
   return (
     <View className="flex-1 bg-white">
-      <Header />
-
       <View className="bg-blue-500 h-24 justify-center py-6 px-[19px]">
         <Text className="text-white text-xl leading-8 font-bold">
           買い物リスト
@@ -28,7 +25,7 @@ const MemoDetail = () => {
       <CircleButton
         icon={<Foundation name="pencil" size={25} color={'white'} />}
         onPress={() => router.push('/memo/edit')}
-        className="top-40 bottom-auto"
+        className="top-16 bottom-auto"
       />
     </View>
   )
