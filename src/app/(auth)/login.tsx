@@ -10,7 +10,7 @@ const Login = () => {
       navigationLink="Sign up here!"
       onPress={() => {
         // TODO: login
-        router.push('/memo/list')
+        router.replace('/memo/list')
       }}
     />
   )
