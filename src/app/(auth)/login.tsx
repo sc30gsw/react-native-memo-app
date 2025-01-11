@@ -7,6 +7,7 @@ const Login = () => {
       title="Log In"
       navigationText="Not registered?"
       navigationLink="Sign up here!"
+      onPress={() => {}}
     />
   )
 }
