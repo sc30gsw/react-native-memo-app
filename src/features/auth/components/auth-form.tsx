@@ -11,7 +11,7 @@ type AuthFormProps = Record<
   'title' | 'navigationText' | 'navigationLink',
   string
 > & {
-  onPress: () => void
+  onPress: (data: AuthSchemaType) => void
 }
 
 export const AuthForm = ({
@@ -33,8 +33,7 @@ export const AuthForm = ({
   })
 
   const onSubmit = handleSubmit((data) => {
-    console.log(data)
-    onPress()
+    onPress(data)
   })
 
   return (

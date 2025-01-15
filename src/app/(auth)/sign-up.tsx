@@ -1,6 +1,9 @@
 import { AuthForm } from '@/features/auth/components/auth-form'
+import { auth } from '@/libs/config'
 import { router } from 'expo-router'
+import { createUserWithEmailAndPassword } from 'firebase/auth'
 import React from 'react'
+import { Alert } from 'react-native'
 
 const SignUp = () => {
   return (
@@ -8,9 +11,22 @@ const SignUp = () => {
       title="Sign Up"
       navigationText="Already registered?"
       navigationLink="Log In"
-      onPress={() => {
-        // TODO: sign up
-        router.replace('/memo/list')
+      onPress={(data) => {
+        createUserWithEmailAndPassword(auth, data.email, data.password)
+          .then(() => {
+            router.replace('/memo/list')
+          })
+          .catch((err: unknown) => {
+            if (err instanceof Error) {
+              Alert.alert(
+                'Email already in use. \n Please use a different email.',
+              )
+
+              return
+            }
+
+            Alert.alert('Something went wrong')
+          })
       }}
     />
   )
