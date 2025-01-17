@@ -1,6 +1,8 @@
+import { auth } from '@/libs/config'
 import { MaterialIcons } from '@expo/vector-icons'
 import { Slot, Stack, router, usePathname } from 'expo-router'
-import { Text, TouchableOpacity, View } from 'react-native'
+import { signOut } from 'firebase/auth'
+import { Alert, Text, TouchableOpacity, View } from 'react-native'
 
 const MemoLayout = () => {
   const pathname = usePathname()
@@ -10,7 +12,17 @@ const MemoLayout = () => {
       <Stack.Screen
         options={{
           headerRight: () => (
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                signOut(auth)
+                  .then(() => {
+                    router.replace('/login')
+                  })
+                  .catch(() => {
+                    Alert.alert('Fail to logout')
+                  })
+              }}
+            >
               <Text className="text-white opacity-70">ログアウト</Text>
             </TouchableOpacity>
           ),
