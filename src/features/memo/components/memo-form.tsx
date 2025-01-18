@@ -71,7 +71,7 @@ export const MemoForm = ({ memo }: MemoFormProps) => {
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       className="flex-1"
     >
-      <View className="px-8 py-7 flex-1">
+      <View className="flex-1">
         <Controller
           name="content"
           control={control}
@@ -81,7 +81,7 @@ export const MemoForm = ({ memo }: MemoFormProps) => {
               placeholder="your memo here..."
               multiline={true}
               autoFocus={true}
-              className="flex-1 text-base align-top"
+              className="flex-1 text-base align-top px-8 py-7 "
               value={value}
               onChangeText={onChange}
             />
