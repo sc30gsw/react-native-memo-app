@@ -1,4 +1,5 @@
 import { Spinner } from '@/components/ui/spinner'
+import { MEMO_CACHE_KEY } from '@/constants'
 import { MemoListItem } from '@/features/memo/components/memo-list-item'
 import { Memo } from '@/features/memo/types/memo'
 import { auth } from '@/libs/config'
@@ -25,7 +26,7 @@ const fetchMemos = async () => {
 
 export const MemoList = () => {
   const { data, isLoading, error } = useQuery({
-    queryKey: ['memos'],
+    queryKey: [MEMO_CACHE_KEY],
     queryFn: fetchMemos,
   })
 
