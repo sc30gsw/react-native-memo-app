@@ -1,37 +1,13 @@
 import { Spinner } from '@/components/ui/spinner'
 import { MEMO_CACHE_KEY } from '@/constants'
 import { CircleButton } from '@/features/memo/components/circle-button'
-import { Memo } from '@/features/memo/types/memo'
-import { auth } from '@/libs/config'
-import { fetcher } from '@/libs/fetcher'
+import { fetchMemo } from '@/features/memo/server/fetch-memo'
 import { Foundation } from '@expo/vector-icons'
 import { useQuery } from '@tanstack/react-query'
 import { format } from 'date-fns'
 import { ja } from 'date-fns/locale/ja'
 import { router, useLocalSearchParams } from 'expo-router'
 import { ScrollView, Text, View } from 'react-native'
-
-const fetchMemo = async (memoId: string) => {
-  if (!auth.currentUser) {
-    router.replace('/login')
-
-    return
-  }
-
-  const memo = await fetcher<Memo>(
-    `users/${auth.currentUser.uid}/memos`,
-    undefined,
-    memoId,
-  )
-
-  if (!memo) {
-    router.back()
-
-    return
-  }
-
-  return memo
-}
 
 const MemoDetail = () => {
   const { id } = useLocalSearchParams()
@@ -78,7 +54,7 @@ const MemoDetail = () => {
       <View className="flex-1 items-end justify-end">
         <CircleButton
           icon={<Foundation name="pencil" size={25} color={'white'} />}
-          onPress={() => router.push('/memo/edit')}
+          onPress={() => router.push(`memo/edit/${data.id}`)}
         />
       </View>
     </View>
