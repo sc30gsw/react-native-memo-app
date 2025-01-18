@@ -14,7 +14,9 @@ export const MemoListItem = ({ memo }: MemoListItemProps) => {
     <Link href={'/memo/detail'} asChild={true}>
       <TouchableOpacity className="bg-white flex-row justify-between items-center py-4 px-[19px] border-b border-gray-300">
         <View>
-          <Text className="text-lg leading-8">{memo.content}</Text>
+          <Text numberOfLines={1} className="text-lg leading-8">
+            {memo.content}
+          </Text>
           <Text className="text-xs text-gray-500">
             {format(memo.updatedAt.toDate(), 'yyyy年MM月dd日 HH:mm', {
               locale: ja,
