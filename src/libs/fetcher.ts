@@ -13,9 +13,12 @@ export const fetcher = async <T>(
     const snapshot = await getDoc(ref)
 
     if (snapshot.exists()) {
-      const res = snapshot.data() as T
+      const res = snapshot.data()
 
-      return res
+      return {
+        ...res,
+        id: snapshot.id,
+      } as T
     }
 
     return null
