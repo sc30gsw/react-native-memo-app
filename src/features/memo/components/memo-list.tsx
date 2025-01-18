@@ -16,12 +16,12 @@ const fetchMemos = async () => {
     return []
   }
 
-  const data = await fetcher<Memo[]>(
+  const memos = await fetcher<Memo[]>(
     `users/${auth.currentUser.uid}/memos`,
     orderBy('updatedAt', 'desc'),
   )
 
-  return data
+  return memos
 }
 
 export const MemoList = () => {
@@ -36,8 +36,10 @@ export const MemoList = () => {
 
   if (error) {
     return (
-      <View>
-        <Text>Something went wrong.</Text>
+      <View className="flex-1 items-center my-8">
+        <Text className="font-bold text-xl text-red-500">
+          Something went wrong.
+        </Text>
       </View>
     )
   }
