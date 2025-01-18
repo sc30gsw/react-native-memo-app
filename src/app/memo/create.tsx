@@ -8,7 +8,7 @@ import { auth, db } from '@/libs/config'
 import { Feather } from '@expo/vector-icons'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { router } from 'expo-router'
-import { addDoc, collection } from 'firebase/firestore'
+import { Timestamp, addDoc, collection } from 'firebase/firestore'
 import { Controller } from 'react-hook-form'
 import {
   Alert,
@@ -42,7 +42,11 @@ const MemoCreate = () => {
         `users/${auth.currentUser.uid}/memos`,
       )
 
-      await addDoc(memoCollection, { content: data.content })
+      await addDoc(memoCollection, {
+        content: data.content,
+        createdAt: Timestamp.fromDate(new Date()),
+        updatedAt: Timestamp.fromDate(new Date()),
+      })
 
       router.back()
     } catch (err: unknown) {
