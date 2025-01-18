@@ -1,5 +1,5 @@
+import { MemoDeleteButton } from '@/features/memo/components/memo-delete-button'
 import { Memo } from '@/features/memo/types/memo'
-import { Fontisto } from '@expo/vector-icons'
 import { format } from 'date-fns'
 import { ja } from 'date-fns/locale/ja'
 import { Link } from 'expo-router'
@@ -23,11 +23,7 @@ export const MemoListItem = ({ memo }: MemoListItemProps) => {
             })}
           </Text>
         </View>
-        <TouchableOpacity>
-          <Text className="text-zinc-400 font-bold">
-            <Fontisto name="close-a" size={16} />
-          </Text>
-        </TouchableOpacity>
+        <MemoDeleteButton id={memo.id} />
       </TouchableOpacity>
     </Link>
   )
