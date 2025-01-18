@@ -11,7 +11,7 @@ type AuthFormProps = Record<
   'title' | 'navigationText' | 'navigationLink',
   string
 > & {
-  onPress: () => void
+  onPress: (data: AuthSchemaType) => void
 }
 
 export const AuthForm = ({
@@ -22,7 +22,7 @@ export const AuthForm = ({
 }: AuthFormProps) => {
   const {
     control,
-    formState: { errors },
+    formState: { errors, isSubmitting },
     handleSubmit,
   } = useSafeForm<AuthSchemaType>({
     resolver: zodResolver(authSchema),
@@ -33,8 +33,7 @@ export const AuthForm = ({
   })
 
   const onSubmit = handleSubmit((data) => {
-    console.log(data)
-    onPress()
+    onPress(data)
   })
 
   return (
@@ -45,6 +44,7 @@ export const AuthForm = ({
         <Controller
           name="email"
           control={control}
+          disabled={isSubmitting}
           render={({ field: { onChange, value } }) => (
             <TextInput
               placeholder="Email Address"
@@ -66,6 +66,7 @@ export const AuthForm = ({
         <Controller
           name="password"
           control={control}
+          disabled={isSubmitting}
           render={({ field: { onChange, value } }) => (
             <TextInput
               placeholder="Password"
@@ -88,6 +89,7 @@ export const AuthForm = ({
 
       <TouchableOpacity
         onPress={onSubmit}
+        disabled={isSubmitting}
         className="bg-blue-500 rounded-md self-start"
       >
         <Text className="text-base text-white px-6 py-2">Submit</Text>
@@ -96,7 +98,7 @@ export const AuthForm = ({
       <View className="flex-row">
         <Text className="text-sm">{navigationText}</Text>
         <Link href={title === 'Log In' ? '/sign-up' : '/login'} asChild={true}>
-          <TouchableOpacity>
+          <TouchableOpacity disabled={isSubmitting}>
             <Text className="text-sm text-blue-500 ml-2">{navigationLink}</Text>
           </TouchableOpacity>
         </Link>

@@ -1,24 +1,24 @@
 import { CircleButton } from '@/features/memo/components/circle-button'
-import { MemoListItem } from '@/features/memo/components/memo-list-item'
+import { MemoList } from '@/features/memo/components/memo-list'
 import { Feather } from '@expo/vector-icons'
 import { router } from 'expo-router'
 import { View } from 'react-native'
 
-export const MemoList = () => {
+export const MemoListPage = () => {
   return (
     <View className="flex-1 bg-white">
       {/* メモリスト */}
-      <View>
-        <MemoListItem />
-      </View>
+      <MemoList />
 
       {/* 追加ボタン */}
-      <CircleButton
-        icon={<Feather name="plus" size={40} color={'white'} />}
-        onPress={() => router.push('/memo/create')}
-      />
+      <View className="flex-1 items-end justify-end">
+        <CircleButton
+          icon={<Feather name="plus" size={40} color={'white'} />}
+          onPress={() => router.push('/memo/create')}
+        />
+      </View>
     </View>
   )
 }
 
-export default MemoList
+export default MemoListPage

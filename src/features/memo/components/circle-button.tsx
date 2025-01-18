@@ -1,24 +1,25 @@
 import { cn } from '@/utils/classes'
-import { ComponentProps, ReactNode } from 'react'
-import { TouchableOpacity, View } from 'react-native'
+import { ReactNode } from 'react'
+import { TouchableOpacity } from 'react-native'
 
 type CircleButtonProps = {
   icon: ReactNode
   onPress: () => void
-  className?: ComponentProps<typeof View>['className']
+  disabled?: boolean
 }
 
 export const CircleButton = ({
   icon,
   onPress,
-  className,
+  disabled,
 }: CircleButtonProps) => {
   return (
     <TouchableOpacity
       onPress={onPress}
+      disabled={disabled}
       className={cn(
-        'size-16 rounded-full bg-blue-500 items-center justify-center absolute bottom-10 right-10 shadow-lg',
-        className,
+        'size-16 rounded-full bg-blue-500 items-center justify-center shadow-lg mb-10 mr-10',
+        disabled && 'bg-neutral-300',
       )}
     >
       {icon}
