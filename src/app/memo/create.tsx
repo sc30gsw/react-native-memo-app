@@ -1,17 +1,16 @@
 import { CircleButton } from '@/features/memo/components/circle-button'
+import { useCreateMemo } from '@/features/memo/hooks/use-create-memo'
 import {
   MemoSchemaType,
   memoSchema,
 } from '@/features/memo/types/schema/memo-schema'
 import { useSafeForm } from '@/hooks/use-safe-form'
-import { auth, db } from '@/libs/config'
+import { auth } from '@/libs/config'
 import { Feather } from '@expo/vector-icons'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { router } from 'expo-router'
-import { Timestamp, addDoc, collection } from 'firebase/firestore'
 import { Controller } from 'react-hook-form'
 import {
-  Alert,
   KeyboardAvoidingView,
   Platform,
   Text,
@@ -22,7 +21,8 @@ import {
 const MemoCreate = () => {
   const {
     control,
-    formState: { errors, isSubmitting },
+    formState: { errors },
+    reset,
     handleSubmit,
   } = useSafeForm<MemoSchemaType>({
     resolver: zodResolver(memoSchema),
@@ -31,31 +31,19 @@ const MemoCreate = () => {
     },
   })
 
+  const { mutate, isPending } = useCreateMemo()
+
   const onSubmit = handleSubmit(async (data) => {
-    try {
-      if (auth.currentUser === null) {
-        return router.replace('/login')
-      }
-
-      const memoCollection = collection(
-        db,
-        `users/${auth.currentUser.uid}/memos`,
-      )
-
-      await addDoc(memoCollection, {
-        content: data.content,
-        createdAt: Timestamp.fromDate(new Date()),
-        updatedAt: Timestamp.fromDate(new Date()),
-      })
-
-      router.back()
-    } catch (err: unknown) {
-      if (err instanceof Error) {
-        return Alert.alert(err.message)
-      }
-
-      Alert.alert('Something went wrong.')
+    if (auth.currentUser === null) {
+      return router.replace('/login')
     }
+
+    mutate(data, {
+      onSuccess: () => {
+        reset()
+        router.back()
+      },
+    })
   })
 
   return (
@@ -67,7 +55,7 @@ const MemoCreate = () => {
         <Controller
           name="content"
           control={control}
-          disabled={true}
+          disabled={isPending}
           render={({ field: { onChange, value } }) => (
             <TextInput
               placeholder="your memo here..."
@@ -86,7 +74,7 @@ const MemoCreate = () => {
       <View className="items-end">
         <CircleButton
           icon={<Feather name="check" size={40} color={'white'} />}
-          disabled={isSubmitting}
+          disabled={isPending}
           onPress={onSubmit}
         />
       </View>
