@@ -7,7 +7,7 @@ import { fetcher } from '@/libs/fetcher'
 import { useQuery } from '@tanstack/react-query'
 import { router } from 'expo-router'
 import { orderBy } from 'firebase/firestore'
-import { Text, View } from 'react-native'
+import { FlatList, Text, View } from 'react-native'
 
 const fetchMemos = async () => {
   if (!auth.currentUser) {
@@ -44,9 +44,10 @@ export const MemoList = () => {
 
   return (
     <View>
-      {data.map((memo) => (
-        <MemoListItem key={memo.id} memo={memo} />
-      ))}
+      <FlatList
+        data={data}
+        renderItem={({ item }) => <MemoListItem memo={item} />}
+      />
     </View>
   )
 }
