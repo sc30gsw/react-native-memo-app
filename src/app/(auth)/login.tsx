@@ -18,11 +18,9 @@ const Login = () => {
           })
           .catch((err: unknown) => {
             if (err instanceof Error) {
-              Alert.alert(
+              return Alert.alert(
                 'Email or Password is incorrect. \n Please try again.',
               )
-
-              return
             }
 
             Alert.alert('Something went wrong')

@@ -18,11 +18,9 @@ const SignUp = () => {
           })
           .catch((err: unknown) => {
             if (err instanceof Error) {
-              Alert.alert(
+              return Alert.alert(
                 'Email already in use. \n Please use a different email.',
               )
-
-              return
             }
 
             Alert.alert('Something went wrong')
