@@ -13,8 +13,8 @@ export const MemoListItem = ({ memo }: MemoListItemProps) => {
   return (
     <Link href={'/memo/detail'} asChild={true}>
       <TouchableOpacity className="bg-white flex-row justify-between items-center py-4 px-[19px] border-b border-gray-300">
-        <View>
-          <Text numberOfLines={1} className="text-lg leading-8">
+        <View className="flex-1 mr-2">
+          <Text numberOfLines={1} className="text-lg leading-8 truncate">
             {memo.content}
           </Text>
           <Text className="text-xs text-gray-500">
