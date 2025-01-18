@@ -15,18 +15,19 @@ export const useDeleteMemo = () => {
           text: 'Delete',
           style: 'destructive',
           onPress: async () => {
-            await deleteDoc(memoDoc)
-            router.replace('/')
+            try {
+              await deleteDoc(memoDoc)
+              router.replace('/')
+            } catch (err: unknown) {
+              if (err instanceof Error) {
+                Alert.alert('Failed to delete')
+              } else {
+                Alert.alert('Something went wrong')
+              }
+            }
           },
         },
       ])
-    },
-    onError: (error) => {
-      if (error instanceof Error) {
-        Alert.alert(error.message)
-      } else {
-        Alert.alert('Something went wrong')
-      }
     },
   })
 
