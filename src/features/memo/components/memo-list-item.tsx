@@ -11,7 +11,7 @@ type MemoListItemProps = {
 
 export const MemoListItem = ({ memo }: MemoListItemProps) => {
   return (
-    <Link href={'/memo/detail'} asChild={true}>
+    <Link href={`memo/details/${memo.id}`} asChild={true}>
       <TouchableOpacity className="bg-white flex-row justify-between items-center py-4 px-[19px] border-b border-gray-300">
         <View className="flex-1 mr-2">
           <Text numberOfLines={1} className="text-lg leading-8 truncate">

@@ -1,14 +1,16 @@
 import { CircleButton } from '@/features/memo/components/circle-button'
 import { Foundation } from '@expo/vector-icons'
-import { router } from 'expo-router'
+import { router, useLocalSearchParams } from 'expo-router'
 import { ScrollView, Text, View } from 'react-native'
 
 const MemoDetail = () => {
+  const { id } = useLocalSearchParams()
+
   return (
     <View className="flex-1 bg-white">
       <View className="bg-blue-500 h-24 justify-center py-6 px-[19px]">
         <Text className="text-white text-xl leading-8 font-bold">
-          買い物リスト
+          買い物リスト {id}
         </Text>
         <Text className="text-white text-xs">2023年10月1日 10:00</Text>
       </View>
