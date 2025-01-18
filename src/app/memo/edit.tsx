@@ -16,7 +16,7 @@ const MemoEdit = () => {
           className="flex-1 text-base align-top"
         />
       </View>
-      <View className="items-end px-10">
+      <View className="flex-1 items-end justify-end">
         <CircleButton
           icon={<Feather name="check" size={40} color={'white'} />}
           onPress={() => router.back()}

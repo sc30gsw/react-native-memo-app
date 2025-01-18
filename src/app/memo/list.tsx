@@ -13,10 +13,12 @@ export const MemoList = () => {
       </View>
 
       {/* 追加ボタン */}
-      <CircleButton
-        icon={<Feather name="plus" size={40} color={'white'} />}
-        onPress={() => router.push('/memo/create')}
-      />
+      <View className="flex-1 items-end justify-end">
+        <CircleButton
+          icon={<Feather name="plus" size={40} color={'white'} />}
+          onPress={() => router.push('/memo/create')}
+        />
+      </View>
     </View>
   )
 }

@@ -22,11 +22,12 @@ const MemoDetail = () => {
         </Text>
       </ScrollView>
 
-      <CircleButton
-        icon={<Foundation name="pencil" size={25} color={'white'} />}
-        onPress={() => router.push('/memo/edit')}
-        className="top-16 bottom-auto"
-      />
+      <View className="flex-1 items-end justify-end">
+        <CircleButton
+          icon={<Foundation name="pencil" size={25} color={'white'} />}
+          onPress={() => router.push('/memo/edit')}
+        />
+      </View>
     </View>
   )
 }

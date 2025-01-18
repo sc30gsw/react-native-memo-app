@@ -72,6 +72,7 @@ const MemoCreate = () => {
             <TextInput
               placeholder="your memo here..."
               multiline={true}
+              autoFocus={true}
               className="flex-1 text-base align-top"
               value={value}
               onChangeText={onChange}
@@ -82,7 +83,7 @@ const MemoCreate = () => {
           <Text className="text-red-500 text-sm">{errors.content.message}</Text>
         )}
       </View>
-      <View className="items-end px-10">
+      <View className="items-end">
         <CircleButton
           icon={<Feather name="check" size={40} color={'white'} />}
           disabled={isSubmitting}
